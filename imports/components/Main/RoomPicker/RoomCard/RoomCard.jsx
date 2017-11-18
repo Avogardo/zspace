@@ -11,7 +11,7 @@ import {
 } from 'material-ui';
 
 
-const RoomCard = ({rooms}) => (
+const RoomCard = ({ rooms }) => (
  <div className="map-wrapper">
     <table>
       <tbody>

@@ -43,12 +43,10 @@ class RoomPicker extends React.Component {
   }
 
   getRooms() {
-    return floors.map((floor, index) => {
-console.log(floor.rooms);
-      return <div key={index + 'room'} style={styles.slide}>
+    return floors.map((floor, index) =>
+      <div key={index + 'room'} style={styles.slide}>
         <RoomCard rooms={floor.rooms} />
       </div>
-    }
     );
   }
 
@@ -73,9 +71,3 @@ console.log(floor.rooms);
 }
 
 export default RoomPicker;
-
-
-        // <h2>{floor.rooms[0].name}</h2>
-        // <p>
-        //   T: {floor.rooms[0].tSensor}, W: {floor.rooms[0].hSensor}
-        // </p>

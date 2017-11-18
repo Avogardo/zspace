@@ -4,7 +4,7 @@ const floors = [{
         name: 'Pralnia',
         tSensor: 'T1',
         hSensor: 'H1',
-        image: 'https://image.freepik.com/darmowe-ikony/pralnia-znak_318-77798.jpg',
+        image: 'http://www.ladakhhimalayanretreat.com/assets/img/icon/laundry.png',
     }, {
         name: 'Warsztat',
         tSensor: 'T2',
@@ -27,7 +27,7 @@ const floors = [{
         name: 'Wypoczynkowy',
         tSensor: 'T5',
         hSensor: 'H5',
-        image: '',
+        image: 'https://image.freepik.com/free-icon/read-book_318-29521.jpg',
     }, {
         name: 'Kuchnia',
         tSensor: 'T6',
@@ -51,7 +51,7 @@ const floors = [{
         name: 'Sypialna',
         tSensor: 'T10',
         hSensor: 'H10',
-        image: '',
+        image: 'http://www.freeiconspng.com/uploads/beds-bedroom-icon-25.png',
     }, {
         name: 'Sypialna 2',
         tSensor: 'T11',
@@ -67,7 +67,7 @@ const floors = [{
         name: 'Korytarz',
         tSensor: 'T13',
         hSensor: 'H13',
-        image: '',
+        image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/78518-200.png',
     }, {
         name: 'Sypialnia',
         tSensor: 'T14',
@@ -83,7 +83,7 @@ const floors = [{
         name: 'Na zewnątrz',
         tSensor: 'T0',
         hSensor: 'H0',
-        image: '',
+        image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/18393-200.png',
     }]
 }];
 
