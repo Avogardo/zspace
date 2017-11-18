@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import AppBarComponent from './AppBarComponent';
+import { Chart } from 'react-google-charts';
 
 class Main extends Component {
   constructor(props) {
@@ -8,12 +9,23 @@ class Main extends Component {
   }
 
   render() {
-    return (<div>
-             <AppBarComponent />
+    const { chartData } = this.props;
 
-            <h1>hellow</h1>
+    return (
+      <div>
+         <AppBarComponent />
 
-        </div>
+        <Chart
+          chartType="AreaChart"
+          data={chartData}
+          options={{}}
+          graph_id="ScatterChart"
+          width="100%"
+          height="400px"
+          legend_toggle
+        />
+
+      </div>
     );
   }
 }

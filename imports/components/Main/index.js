@@ -3,34 +3,30 @@ import { compose } from 'react-komposer';
 
 import Main from './Main.jsx';
 
-import {
-  actions as sensorsActions,
-} from '/imports/api/sensorsData';
+import { actions as sensorsActions } from '/imports/api/sensorsData';
+
+import { helpers as sensorsHelpers } from '/imports/api/sensorsData';
 
 const composer = (props, onData) => {
-    const baseUrl = 'https://avogardo.grafana.net/api/datasources/proxy/4/query?';
+  const baseUrl = 'https://avogardo.grafana.net/api/datasources/proxy/4/query?';
 
-    const api = {
-        getTestData: `${baseUrl}db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = 'H11') AND time >= 1462365579442ms and time <= 1462367602026ms&epoch=ms`,
-    }
+  const api = {
+    getTestData: `${baseUrl}db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = 'H11') AND time >= 1462365579442ms and time <= 1462367602026ms&epoch=ms`,
+  }
 
-sensorsActions.addNewRow(api.getTestData).then(r => {
-    console.log(r.data.results[0].series[0]);
-}).catch(e => {
-    console.log(e);
-})
+  sensorsActions.get(api.getTestData).then(result => {
+      const chartData = sensorsHelpers.toChartData(result.data.results[0].series[0]);
+      onData(null, {
+        chartData,
+      });
+  }).catch(error => {
+      console.log(error);
+  })
 
-
-
-const date = new Date().getTime()
-console.log(date);
-console.log(new Date(date));
-
-console.log(new Date(1462365579442));
-
-  onData(null, {
-
-  });
+  const date = new Date().getTime()
+  console.log(date);
+  console.log(new Date(date));
+  console.log(new Date(1462365579442));
 };
 
 export default compose(
