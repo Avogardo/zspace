@@ -17,7 +17,7 @@ class Main extends Component {
       <div>
         <AppBarComponent />
 
-        <div className="room-picker-wrapper">
+        <div className="room-picker-wrapper shadow">
           <RoomPicker />
         </div>
 
