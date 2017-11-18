@@ -17,7 +17,10 @@ img:active {
 
 .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .map-wrapper {
