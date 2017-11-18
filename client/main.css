@@ -15,16 +15,16 @@ img:active {
     height: 100px;
 }
 
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
 .map-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 90%;
-}
-
-.room-picker-wrapper {
-    margin-top: 10px;
-    max-width: 50%;
+    height: 100%;
 }
 
 .shadow {
@@ -32,6 +32,7 @@ img:active {
     -moz-box-shadow: 0px 0px 17px 0px rgba(122,122,122,1);
     box-shadow: 0px 0px 17px 0px rgba(122,122,122,1);
     padding: 10px;
+    box-sizing: border-box;
     border-radius: 10px;
 }
 
@@ -44,10 +45,29 @@ img:active {
     align-items: center;
 }
 
+.tile {
+    min-width: 49%;
+    margin-top: 10px;
+}
+
+.left-tile {
+    margin-right: 10px;
+}
+
 @media (max-width: 800px) {
 
-.room-picker-wrapper {
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tile {
     max-width: 100%;
+}
+
+.left-tile {
+    margin-right: 0;
 }
 
 }

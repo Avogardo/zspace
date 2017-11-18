@@ -17,19 +17,23 @@ class Main extends Component {
       <div>
         <AppBarComponent />
 
-        <div className="room-picker-wrapper shadow">
-          <RoomPicker />
-        </div>
+        <div className="container">
+          <div className="tile shadow left-tile">
+            <RoomPicker />
+          </div>
 
-          <Chart
-            chartType="AreaChart"
-            data={chartData}
-            options={{}}
-            graph_id="ScatterChart"
-            width="100%"
-            height="400px"
-            legend_toggle
-          />
+          <div className="tile shadow">
+            <Chart
+              chartType="AreaChart"
+              data={chartData}
+              options={{}}
+              graph_id="ScatterChart"
+              width="90%"
+              height="350px"
+              legend_toggle
+            />
+          </div>
+        </div>
       </div>
     );
   }
