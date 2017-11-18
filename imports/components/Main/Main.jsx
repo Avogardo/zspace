@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
+import { Chart } from 'react-google-charts';
 
 import AppBarComponent from './AppBarComponent';
-import { Chart } from 'react-google-charts';
+import RoomPicker from './RoomPicker';
+
 
 class Main extends Component {
   constructor(props) {
@@ -13,18 +15,21 @@ class Main extends Component {
 
     return (
       <div>
-         <AppBarComponent />
+        <AppBarComponent />
 
-        <Chart
-          chartType="AreaChart"
-          data={chartData}
-          options={{}}
-          graph_id="ScatterChart"
-          width="100%"
-          height="400px"
-          legend_toggle
-        />
+        <div className="room-picker-wrapper">
+          <RoomPicker />
+        </div>
 
+          <Chart
+            chartType="AreaChart"
+            data={chartData}
+            options={{}}
+            graph_id="ScatterChart"
+            width="100%"
+            height="400px"
+            legend_toggle
+          />
       </div>
     );
   }

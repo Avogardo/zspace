@@ -1,1 +1,13 @@
 /* CSS declarations go here */
+.room-picker-wrapper {
+    margin-top: 10px;
+    max-width: 50%;
+}
+
+@media (max-width: 800px) {
+
+.room-picker-wrapper {
+    max-width: 100%;
+}
+
+}
