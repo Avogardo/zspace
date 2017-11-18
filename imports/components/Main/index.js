@@ -4,11 +4,17 @@ import { compose } from 'react-komposer';
 import Main from './Main.jsx';
 
 import {
-  actions as tableActions,
-} from '/imports/api/tableData';
+  actions as sensorsActions,
+} from '/imports/api/sensorsData';
 
 const composer = (props, onData) => {
-tableActions.addNewRow("https://avogardo.grafana.net/api/datasources/proxy/4/query?db=pomiary_test&q=SELECT%20*%20FROM%20%22pomiary_test%22%20WHERE%20(%22sensor%22%20%3D%20%27T9%27)%20AND%20time%20%3E%3D%201510771287176ms%20and%20time%20%3C%3D%201510773279067ms&epoch=ms").then(r => {
+    const baseUrl = 'https://avogardo.grafana.net/api/datasources/proxy/4/query?';
+
+    const api = {
+        getTestData: `${baseUrl}db=pomiary_test&q=SELECT * FROM "pomiary_test" WHERE ("sensor" = 'T9') AND time >= 1510771287176ms and time <= 1510773279067ms&epoch=ms`,
+    }
+
+sensorsActions.addNewRow(api.getTestData).then(r => {
     console.log(r.data.results[0].series[0]);
 }).catch(e => {
     console.log(e);
