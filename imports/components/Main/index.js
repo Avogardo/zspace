@@ -11,7 +11,7 @@ const composer = (props, onData) => {
     const baseUrl = 'https://avogardo.grafana.net/api/datasources/proxy/4/query?';
 
     const api = {
-        getTestData: `${baseUrl}db=pomiary_test&q=SELECT * FROM "pomiary_test" WHERE ("sensor" = 'T9') AND time >= 1510771287176ms and time <= 1510773279067ms&epoch=ms`,
+        getTestData: `${baseUrl}db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = 'H11') AND time >= 1462365579442ms and time <= 1462367602026ms&epoch=ms`,
     }
 
 sensorsActions.addNewRow(api.getTestData).then(r => {
@@ -19,6 +19,14 @@ sensorsActions.addNewRow(api.getTestData).then(r => {
 }).catch(e => {
     console.log(e);
 })
+
+
+
+const date = new Date().getTime()
+console.log(date);
+console.log(new Date(date));
+
+console.log(new Date(1462365579442));
 
   onData(null, {
 

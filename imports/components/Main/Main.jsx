@@ -1,14 +1,19 @@
-import React, { PropTypes } from 'react';
-import TrackerReact from 'meteor/ultimatejs:tracker-react';
+import React, { Component, PropTypes } from 'react';
 
+import AppBarComponent from './AppBarComponent';
 
-class Main extends TrackerReact(React.Component) {
+class Main extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    return (<h1>hellow</h1>
+    return (<div>
+             <AppBarComponent />
+
+            <h1>hellow</h1>
+
+        </div>
     );
   }
 }
