@@ -4,18 +4,22 @@ const floors = [{
         name: 'Pralnia',
         tSensor: 'T1',
         hSensor: 'H1',
+        image: 'https://image.freepik.com/darmowe-ikony/pralnia-znak_318-77798.jpg',
     }, {
         name: 'Warsztat',
         tSensor: 'T2',
         hSensor: 'H2',
+        image: '',
     }, {
         name: 'Kotlownia',
         tSensor: 'T3',
         hSensor: 'H3',
+        image: '',
     }, {
         name: 'Korytarz',
         tSensor: 'T4',
         hSensor: 'H4',
+        image: '',
     }]
 }, {
     name: 'Parter',
@@ -23,6 +27,7 @@ const floors = [{
         name: 'Wypoczynkowy',
         tSensor: 'T5',
         hSensor: 'H5',
+        image: '',
     }, {
         name: 'Kuchnia',
         tSensor: 'T6',
@@ -46,6 +51,7 @@ const floors = [{
         name: 'Sypialna',
         tSensor: 'T10',
         hSensor: 'H10',
+        image: '',
     }, {
         name: 'Sypialna 2',
         tSensor: 'T11',
@@ -61,6 +67,7 @@ const floors = [{
         name: 'Korytarz',
         tSensor: 'T13',
         hSensor: 'H13',
+        image: '',
     }, {
         name: 'Sypialnia',
         tSensor: 'T14',
@@ -76,6 +83,7 @@ const floors = [{
         name: 'Na zewnątrz',
         tSensor: 'T0',
         hSensor: 'H0',
+        image: '',
     }]
 }];
 

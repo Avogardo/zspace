@@ -3,6 +3,8 @@ import { Tabs, Tab } from 'material-ui';
 import SwipeableViews from 'react-swipeable-views';
 
 import floors from './floors.js';
+import RoomCard from './RoomCard';
+
 
 const styles = {
   headline: {
@@ -41,13 +43,12 @@ class RoomPicker extends React.Component {
   }
 
   getRooms() {
-    return floors.map((floor, index) =>
-      <div key={index + 'room'} style={styles.slide}>
-        <h2>{floor.rooms[0].name}</h2>
-        <p>
-          T: {floor.rooms[0].tSensor}, W: {floor.rooms[0].hSensor}
-        </p>
+    return floors.map((floor, index) => {
+console.log(floor.rooms);
+      return <div key={index + 'room'} style={styles.slide}>
+        <RoomCard rooms={floor.rooms} />
       </div>
+    }
     );
   }
 
@@ -72,3 +73,9 @@ class RoomPicker extends React.Component {
 }
 
 export default RoomPicker;
+
+
+        // <h2>{floor.rooms[0].name}</h2>
+        // <p>
+        //   T: {floor.rooms[0].tSensor}, W: {floor.rooms[0].hSensor}
+        // </p>

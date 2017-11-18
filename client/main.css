@@ -1,7 +1,33 @@
 /* CSS declarations go here */
+table {
+    border: 1px solid black;
+}
+
+img {
+    width: 108px;
+    height: 108px;
+    cursor: pointer;
+}
+
+.map-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+}
+
 .room-picker-wrapper {
     margin-top: 10px;
     max-width: 50%;
+}
+
+.placeholder {
+    width: 110px;
+    height: 110px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (max-width: 800px) {
