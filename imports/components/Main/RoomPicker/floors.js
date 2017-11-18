@@ -9,17 +9,17 @@ const floors = [{
         name: 'Warsztat',
         tSensor: 'T2',
         hSensor: 'H2',
-        image: '',
+        image: 'https://cdn3.iconfinder.com/data/icons/steelworks-and-metalworking-workshop/234/iron-work-steel-worker-006-512.png',
     }, {
         name: 'Kotlownia',
         tSensor: 'T3',
         hSensor: 'H3',
-        image: '',
+        image: 'https://iconalone.com/sites/default/files/styles/220x220/public/Gas%20boiler-15.svg.png?itok=Sxn0P7n9',
     }, {
         name: 'Korytarz',
         tSensor: 'T4',
         hSensor: 'H4',
-        image: '',
+        image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/78518-200.png',
     }]
 }, {
     name: 'Parter',
@@ -32,18 +32,22 @@ const floors = [{
         name: 'Kuchnia',
         tSensor: 'T6',
         hSensor: 'H6',
+        image: 'https://image.flaticon.com/icons/svg/47/47561.svg',
     }, {
         name: 'Korytarz',
         tSensor: 'T7',
         hSensor: 'H7',
+        image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/78518-200.png',
     }, {
         name: 'Łazienka',
         tSensor: 'T8',
         hSensor: 'H8',
+        image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/3121-200.png',
     }, {
         name: 'Jadalnia',
         tSensor: 'T9',
         hSensor: 'H9',
+        image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/754884-200.png',
     }]
 }, {
     name: '1 pietro',
@@ -56,10 +60,12 @@ const floors = [{
         name: 'Sypialna 2',
         tSensor: 'T11',
         hSensor: 'H11',
+        image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/71556-200.png',
     }, {
         name: 'Korytarz',
         tSensor: 'T12',
         hSensor: 'H12',
+        image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/78518-200.png',
     }]
 }, {
     name: '2 pietro',
@@ -72,10 +78,12 @@ const floors = [{
         name: 'Sypialnia',
         tSensor: 'T14',
         hSensor: 'H14',
+        image: 'http://www.freeiconspng.com/uploads/beds-bedroom-icon-25.png',
     }, {
         name: 'Łazienka',
         tSensor: 'T15',
         hSensor: 'H15',
+        image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/3121-200.png',
     }]
 }, {
     name: 'Dwór',

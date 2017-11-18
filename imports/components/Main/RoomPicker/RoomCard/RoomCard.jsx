@@ -11,28 +11,13 @@ import {
 } from 'material-ui';
 
 
+getRoomsTiles = (rooms) => rooms.map(room =>
+  <div key={room.name + 'tile'} className="placeholder"><img src={room.image} /></div>
+);
+
 const RoomCard = ({ rooms }) => (
  <div className="map-wrapper">
-    <table>
-      <tbody>
-        <tr>
-          <td><div className="placeholder laundry-class"><img src={rooms[0].image} /></div></td>
-          <td><div className="placeholder"></div></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <div className="placeholder"></div>
-          </td>
-          <td>
-            <div className="placeholder"></div>
-          </td>
-          <td>
-            <div className="placeholder"></div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    {getRoomsTiles(rooms)}
   </div>
 );
 

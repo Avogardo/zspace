@@ -25,6 +25,7 @@ img:active {
 
 .map-wrapper {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     height: 100%;
@@ -46,6 +47,8 @@ img:active {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 2px;
+    border-radius: 5px;
 }
 
 .tile {
