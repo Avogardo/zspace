@@ -7,6 +7,12 @@ img {
     width: 108px;
     height: 108px;
     cursor: pointer;
+    transition: height 0.1s, width 0.1s;
+}
+
+img:active {
+    width: 100px;
+    height: 100px;
 }
 
 .map-wrapper {
