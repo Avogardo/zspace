@@ -11,9 +11,14 @@ class MenuDialog extends Component {
   constructor(props) {
     super(props);
 
+    const credentials = JSON.parse(localStorage.getItem('credentials'));
+
+    const graphanaName = credentials ? credentials.graphanaName : '';
+    const authenticationHeader = credentials ? credentials.authenticationHeader : '';
+
     this.state = {
-      graphanaName: '',
-      authenticationHeader: '',
+      graphanaName,
+      authenticationHeader,
       graphanaNameError: '',
       authenticationHeaderError: '',
     };
@@ -85,18 +90,23 @@ class MenuDialog extends Component {
 
   render() {
     const { open } = this.props;
-    const { graphanaNameError, authenticationHeaderError } = this.state;
+    const {
+      graphanaName,
+      authenticationHeader,
+      graphanaNameError,
+      authenticationHeaderError,
+    } = this.state;
 
     const actions = [
-        <FlatButton
-          label="Anuluj"
-          onTouchTap={e => this.onClose(e)}
-        />,
-        <FlatButton
-          label="Zapisz"
-          primary
-          onTouchTap={e => this.onSubmit(e)}
-        />,
+      <FlatButton
+        label="Anuluj"
+        onTouchTap={e => this.onClose(e)}
+      />,
+      <FlatButton
+        label="Zapisz"
+        primary
+        onTouchTap={e => this.onSubmit(e)}
+      />,
     ];
 
     return (
@@ -109,11 +119,13 @@ class MenuDialog extends Component {
         >
           <TextField
             hintText="Nickname z graphany"
+            value={graphanaName}
             errorText={graphanaNameError}
             onChange={e => this.onChangeName(e)}
           />
           <TextField
             hintText="Token"
+            value={authenticationHeader}
             errorText={authenticationHeaderError}
             onChange={e => this.onChangeHeader(e)}
           />
