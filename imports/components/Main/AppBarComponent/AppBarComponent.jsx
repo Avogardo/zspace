@@ -3,10 +3,10 @@ import Menu from './Menu';
 import { AppBar } from 'material-ui';
 
 
-const AppBarComponent = () => (
+const AppBarComponent = ({ openDialog }) => (
   <AppBar
     title="System wizualizacji"
-    iconElementRight={<Menu />}
+    iconElementRight={<Menu openDialog={openDialog} />}
   />
 );
 
