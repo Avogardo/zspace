@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Body from '../Body';
 import AppBarComponent from './AppBarComponent';
-
+import RoomPicker from './RoomPicker';
 
   class Main extends Component {
   constructor(props) {
@@ -27,7 +27,13 @@ import AppBarComponent from './AppBarComponent';
           updateBody={() => this.refresh()}
         />
 
+      <div className="container">
+        <div className="tile shadow left-tile">
+          <RoomPicker />
+        </div>
+
         <Body />
+      </div>
       </div>
     );
   }

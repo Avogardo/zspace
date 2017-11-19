@@ -4,10 +4,11 @@ import { compose, composeWithTracker  } from 'react-komposer';
 import { actions as sensorsActions } from '/imports/api/sensorsData';
 import { helpers as sensorsHelpers } from '/imports/api/sensorsData';
 
-import Body from './Body.jsx';
+import Charts from './Charts.jsx';
 
 const composer = (props, onData) => {
-  const baseUrl = 'https://avogardo.grafana.net/api/datasources/proxy/4/query?';
+  const credentials = JSON.parse(localStorage.getItem('credentials'));
+  const baseUrl = `https://${credentials.graphanaName}.grafana.net/api/datasources/proxy/4/query?`;
 
   const api = {
     getTestData: `${baseUrl}db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = 'H11') AND time >= 1462362545566ms and time <= 1462370635902ms&epoch=ms`,
@@ -21,9 +22,11 @@ const composer = (props, onData) => {
   }).catch(error => {
       console.log(error);
   })
-      onData(null, {
-        chartData: null
-      });
+
+  onData(null, {
+    chartData: null
+  });
+
   const date = new Date().getTime()
   console.log(date);
   console.log(new Date(date));
@@ -33,4 +36,4 @@ const composer = (props, onData) => {
 export default compose(
   composer,
   FullPageLoader,
-)(Body);
+)(Charts);

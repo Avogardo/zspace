@@ -11,8 +11,9 @@ class MenuDialog extends Component {
   constructor(props) {
     super(props);
 
-    const credentials = JSON.parse(localStorage.getItem('credentials'));
+    this.handleRequestClose = this.handleRequestClose.bind(this);
 
+    const credentials = JSON.parse(localStorage.getItem('credentials'));
     const graphanaName = credentials ? credentials.graphanaName : '';
     const authenticationHeader = credentials ? credentials.authenticationHeader : '';
 
@@ -21,6 +22,7 @@ class MenuDialog extends Component {
       authenticationHeader,
       graphanaNameError: '',
       authenticationHeaderError: '',
+      openSnackBar: false,
     };
   }
 
@@ -54,9 +56,11 @@ class MenuDialog extends Component {
         authenticationHeader,
       }
 
+      this.setState({
+        openSnackBar: true,
+      });
+
       localStorage.setItem('credentials', JSON.stringify(credentials));
-      const a = JSON.parse(localStorage.getItem('credentials'));
-      console.log(a);
 
       refreshBody();
       onClose();
@@ -88,6 +92,12 @@ class MenuDialog extends Component {
     });
   }
 
+  handleRequestClose() {
+    this.setState({
+      openSnackBar: false,
+    });
+  };
+
   render() {
     const { open } = this.props;
     const {
@@ -95,6 +105,7 @@ class MenuDialog extends Component {
       authenticationHeader,
       graphanaNameError,
       authenticationHeaderError,
+      openSnackBar,
     } = this.state;
 
     const actions = [
@@ -130,6 +141,13 @@ class MenuDialog extends Component {
             onChange={e => this.onChangeHeader(e)}
           />
         </Dialog>
+
+        <Snackbar
+          open={openSnackBar}
+          message="Zapisano zmiany!"
+          autoHideDuration={4000}
+          onRequestClose={this.handleRequestClose}
+        />
       </div>
     );
   }
