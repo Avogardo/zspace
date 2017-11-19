@@ -21,6 +21,7 @@ class MenuDialog extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+    const { refreshBody, onClose } = this.props;
     const { graphanaName, authenticationHeader } = this.state;
 
     if (!graphanaName) {
@@ -42,16 +43,19 @@ class MenuDialog extends Component {
       });
     }
 
-    const credentials = {
-      graphanaName,
-      authenticationHeader,
+    if (authenticationHeader && graphanaName) {
+      const credentials = {
+        graphanaName,
+        authenticationHeader,
+      }
+
+      localStorage.setItem('credentials', JSON.stringify(credentials));
+      const a = JSON.parse(localStorage.getItem('credentials'));
+      console.log(a);
+
+      refreshBody();
+      onClose();
     }
-
-    localStorage.setItem('credentials', JSON.stringify(credentials));
-
-const a = JSON.parse(localStorage.getItem('credentials'));
-
-    console.log(a);
   }
 
   onClose(e) {

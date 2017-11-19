@@ -29,6 +29,7 @@ class AppBarComponent extends Component {
   }
 
   render() {
+    const { updateBody } = this.props;
     const { showMenuDialog } = this.state;
 
     return (
@@ -41,6 +42,7 @@ class AppBarComponent extends Component {
         <MenuDialog
           open={showMenuDialog}
           onClose={this.hideDialog}
+          refreshBody={updateBody}
         />
       </div>
     );

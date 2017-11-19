@@ -1,15 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Body from '../Body';
 import AppBarComponent from './AppBarComponent';
 
 
-const Main = () => (
-  <div>
-    <AppBarComponent openDialog={this.openDialog} />
+  class Main extends Component {
+  constructor(props) {
+    super(props);
 
-    <Body />
-  </div>
-);
+    this.state = {
+      refresh: false,
+    };
+  }
+
+  refresh() {
+    this.setState({
+      refresh: true,
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <AppBarComponent
+          openDialog={this.openDialog}
+          updateBody={() => this.refresh()}
+        />
+
+        <Body />
+      </div>
+    );
+  }
+}
 
 export default Main;
