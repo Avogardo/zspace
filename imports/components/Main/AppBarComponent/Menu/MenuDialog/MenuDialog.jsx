@@ -89,11 +89,11 @@ class MenuDialog extends Component {
 
     const actions = [
         <FlatButton
-          label="Cancel"
+          label="Anuluj"
           onTouchTap={e => this.onClose(e)}
         />,
         <FlatButton
-          label="Add"
+          label="Zapisz"
           primary
           onTouchTap={e => this.onSubmit(e)}
         />,
@@ -102,18 +102,18 @@ class MenuDialog extends Component {
     return (
       <div>
         <Dialog
-          title="Options"
+          title="Ustawienia"
           actions={actions}
           open={open}
           onRequestClose={() => this.onClose()}
         >
           <TextField
-            hintText="Graphana name"
+            hintText="Nickname z graphany"
             errorText={graphanaNameError}
             onChange={e => this.onChangeName(e)}
           />
           <TextField
-            hintText="Auth header"
+            hintText="Token"
             errorText={authenticationHeaderError}
             onChange={e => this.onChangeHeader(e)}
           />

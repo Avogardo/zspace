@@ -13,7 +13,7 @@ const Menu = ({ openDialog }) => (
     targetOrigin={{horizontal: 'right', vertical: 'top'}}
     anchorOrigin={{horizontal: 'right', vertical: 'top'}}
   >
-    <MenuItem primaryText="Options" onTouchTap={openDialog} />
+    <MenuItem primaryText="Ustawienia" onTouchTap={openDialog} />
   </IconMenu>
 );
 
