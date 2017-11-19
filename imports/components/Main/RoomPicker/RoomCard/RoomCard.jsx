@@ -12,7 +12,7 @@ import {
 
 
 getRoomsTiles = (rooms) => rooms.map(room =>
-  <div key={room.name + 'tile'} className="placeholder"><img src={room.image} /></div>
+  <div key={room.name + 'tile'} className="placeholder"><img src={room.image} alt={room.name} /></div>
 );
 
 const RoomCard = ({ rooms }) => (
