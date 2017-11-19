@@ -54,6 +54,7 @@ img:active {
 .tile {
     min-width: 49%;
     margin-top: 10px;
+    height: 360px;
 }
 
 .left-tile {

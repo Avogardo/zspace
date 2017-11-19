@@ -27,7 +27,7 @@ class Body extends Component {
               options={{}}
               graph_id="ScatterChart"
               width="90%"
-              height="300px"
+              height="350px"
               legend_toggle
             />
             :
