@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Chart } from 'react-google-charts';
+import { FullPageLoader } from '/imports/components/Loaders';
 
 import RoomPicker from './RoomPicker';
 
@@ -13,23 +14,25 @@ class Body extends Component {
     const { chartData } = this.props;
 
     return (
-      <div>
-        <div className="container">
-          <div className="tile shadow left-tile">
-            <RoomPicker />
-          </div>
+      <div className="container">
+        <div className="tile shadow left-tile">
+          <RoomPicker />
+        </div>
 
-          <div className="tile shadow">
+        <div className="tile shadow">
+          {chartData ?
             <Chart
               chartType="AreaChart"
               data={chartData}
               options={{}}
               graph_id="ScatterChart"
               width="90%"
-              height="350px"
+              height="300px"
               legend_toggle
             />
-          </div>
+            :
+            <FullPageLoader />
+          }
         </div>
       </div>
     );
