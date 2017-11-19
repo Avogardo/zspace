@@ -36,6 +36,7 @@ class AppBarComponent extends Component {
       <div>
         <AppBar
           title="System wizualizacji"
+          showMenuIconButton={false}
           iconElementRight={<Menu openDialog={this.openDialog} />}
         />
 
