@@ -19,6 +19,7 @@ img:active {
 .container {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     max-width: 1300px;
     margin-left: auto;
     margin-right: auto;
@@ -53,13 +54,15 @@ img:active {
 }
 
 .tile {
-    min-width: 49%;
+    width: 48%;
     margin-top: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
     height: 360px;
 }
 
-.left-tile {
-    margin-right: 10px;
+.long-tile {
+    width: 97%;
 }
 
 .chart {
@@ -77,11 +80,11 @@ img:active {
 }
 
 .tile {
-    max-width: 100%;
+    width: 98%;
 }
 
-.left-tile {
+/*.left-tile {
     margin-right: 0;
-}
+}*/
 
 }
