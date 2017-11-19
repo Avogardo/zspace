@@ -71,8 +71,6 @@ class MenuDialog extends Component {
     const { onClose } = this.props;
 
     this.setState({
-      graphanaName: '',
-      authenticationHeader: '',
       graphanaNameError: '',
       authenticationHeaderError: '',
     });
