@@ -1,3 +1,3 @@
-import AddDialog from './AddDialog.jsx';
+import MenuDialog from './MenuDialog.jsx';
 
-export default AddDialog;
+export default MenuDialog;

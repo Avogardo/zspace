@@ -1,18 +1,15 @@
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
 import {
   FlatButton,
   Dialog,
   TextField,
-  DatePicker,
   Snackbar,
-  CardText,
 } from 'material-ui';
 
 
-class AddDialog extends React.Component {
+class MenuDialog extends Component {
   constructor(props) {
     super(props);
-    this.handleRequestClose = this.handleRequestClose.bind(this);
   }
 
   onSubmit(e) {
@@ -48,17 +45,15 @@ class AddDialog extends React.Component {
     return (
       <div>
         <Dialog
-          title="Compose new row"
+          title="Options"
           actions={actions}
           open={open}
         >
           <TextField
             hintText="Name"
-            onChange={e => this.onChangeName(e)}
           />
           <TextField
-            hintText="Surname"
-            onChange={e => this.onChangeSurname(e)}
+            hintText="Auth header"
           />
         </Dialog>
       </div>
@@ -66,9 +61,4 @@ class AddDialog extends React.Component {
   }
 }
 
-AddDialog.propTypes = {
-  open: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-};
-
-export default AddDialog;
+export default MenuDialog;
