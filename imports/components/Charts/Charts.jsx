@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import { FullPageLoader } from '/imports/components/Loaders';
 import { Line } from 'react-chartjs-2';
+import { CircularProgress } from 'material-ui';
 
 class Charts extends Component {
   constructor(props) {
@@ -38,11 +38,11 @@ class Charts extends Component {
     };
 
     return (
-      <div className="tile shadow">
+      <div className="tile shadow chart">
         {chartData ?
           <Line data={data} />
           :
-          <FullPageLoader />
+          <CircularProgress/>
         }
       </div>
     );
