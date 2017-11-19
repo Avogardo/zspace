@@ -28,7 +28,7 @@ class MenuDialog extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const { refreshBody, onClose } = this.props;
+    const { refreshCharts, onClose } = this.props;
     const { graphanaName, authenticationHeader } = this.state;
 
     if (!graphanaName) {
@@ -62,7 +62,7 @@ class MenuDialog extends Component {
 
       localStorage.setItem('credentials', JSON.stringify(credentials));
 
-      refreshBody();
+      refreshCharts();
       onClose();
     }
   }

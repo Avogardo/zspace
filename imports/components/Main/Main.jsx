@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import Body from '../Body';
+import Charts from '../Charts';
 import AppBarComponent from './AppBarComponent';
 import RoomPicker from './RoomPicker';
 
-  class Main extends Component {
+class Main extends Component {
   constructor(props) {
     super(props);
 
@@ -24,7 +24,7 @@ import RoomPicker from './RoomPicker';
       <div>
         <AppBarComponent
           openDialog={this.openDialog}
-          updateBody={() => this.refresh()}
+          updateCharts={() => this.refresh()}
         />
 
       <div className="container">
@@ -32,7 +32,7 @@ import RoomPicker from './RoomPicker';
           <RoomPicker />
         </div>
 
-        <Body />
+        <Charts />
       </div>
       </div>
     );

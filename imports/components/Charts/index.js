@@ -8,7 +8,8 @@ import Charts from './Charts.jsx';
 
 const composer = (props, onData) => {
   const credentials = JSON.parse(localStorage.getItem('credentials'));
-  const baseUrl = `https://${credentials.graphanaName}.grafana.net/api/datasources/proxy/4/query?`;
+  const graphanaName = credentials ? credentials.graphanaName : '';
+  const baseUrl = `https://${graphanaName}.grafana.net/api/datasources/proxy/4/query?`;
 
   const api = {
     getTestData: `${baseUrl}db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = 'H11') AND time >= 1462362545566ms and time <= 1462370635902ms&epoch=ms`,
