@@ -19,7 +19,10 @@ class MenuDialog extends Component {
   }
 
   onClose(e) {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
+
     const {
       onClose,
     } = this.props;
@@ -48,6 +51,7 @@ class MenuDialog extends Component {
           title="Options"
           actions={actions}
           open={open}
+          onRequestClose={() => this.onClose()}
         >
           <TextField
             hintText="Name"
