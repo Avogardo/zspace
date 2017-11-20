@@ -14,7 +14,7 @@ const composer = ({ chartsConfigs }, onData) => {
         label: 'Temperatura',
         fill: false,
         lineTension: 0.1,
-        backgroundColor: '#C5CAE9',
+        backgroundColor: '#EF5350',
         borderColor: '#C62828',
         borderCapStyle: 'butt',
         borderDash: [],

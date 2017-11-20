@@ -18,9 +18,20 @@ class Main extends Component {
     });
   }
 
-  render() {
-    const chartsConfigs = [1, 2, 3];
+  getChartsConfigs() {
+    const chartsConfigs = JSON.parse(localStorage.getItem('charts-configs'));
 
+    if (!chartsConfigs) {
+      const newChartsConfigs = [1, 2, 3];
+
+      localStorage.setItem('charts-configs', JSON.stringify(newChartsConfigs));
+      return newChartsConfigs;
+    }
+
+    return chartsConfigs;
+  }
+
+  render() {
     return (
       <div>
         <AppBarComponent
@@ -29,7 +40,7 @@ class Main extends Component {
         />
 
       <div>
-        <Charts chartsConfigs={chartsConfigs} />
+        <Charts chartsConfigs={this.getChartsConfigs()} />
       </div>
       </div>
     );
