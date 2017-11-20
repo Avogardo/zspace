@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Charts from '../Charts';
 import AppBarComponent from './AppBarComponent';
+import floors from '../Charts/RoomPicker/floors.js';
 
 class Main extends Component {
   constructor(props) {
@@ -22,7 +23,27 @@ class Main extends Component {
     const chartsConfigs = JSON.parse(localStorage.getItem('charts-configs'));
 
     if (!chartsConfigs) {
-      const newChartsConfigs = [1, 2, 3];
+      const newChartsConfigs = [];
+      floors.forEach(floor => {
+        floor.rooms.forEach(room => {
+          newChartsConfigs.push({
+            name: room.name,
+            title: 'Temperatura',
+            sensor: room.tSensor,
+            query: '',
+            className: '',
+          });
+
+          newChartsConfigs.push({
+            name: room.name,
+            title: 'Wilgotność',
+            sensor: room.hSensor,
+            query: '',
+            className: '',
+          });
+        });
+      }); //todo move to helper
+
 
       localStorage.setItem('charts-configs', JSON.stringify(newChartsConfigs));
       return newChartsConfigs;
