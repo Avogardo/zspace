@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import Charts from '../Charts';
 import AppBarComponent from './AppBarComponent';
-import RoomPicker from './RoomPicker';
 
 class Main extends Component {
   constructor(props) {
@@ -20,6 +19,8 @@ class Main extends Component {
   }
 
   render() {
+    const chartsConfigs = [1, 2, 3];
+
     return (
       <div>
         <AppBarComponent
@@ -27,12 +28,8 @@ class Main extends Component {
           updateCharts={() => this.refresh()}
         />
 
-      <div className="container">
-        <div className="tile shadow left-tile">
-          <RoomPicker />
-        </div>
-
-        <Charts />
+      <div>
+        <Charts chartsConfigs={chartsConfigs} />
       </div>
       </div>
     );
