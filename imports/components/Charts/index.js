@@ -6,7 +6,12 @@ import { helpers as sensorsHelpers } from '/imports/api/sensorsData';
 
 import Charts from './Charts.jsx';
 
-const composer = ({ chartsConfigs }, onData) => {
+const composer = (props, onData) => {
+  if (props.match) {
+    console.log(props.match.params);
+  }
+
+  const chartsConfigs = JSON.parse(localStorage.getItem('charts-configs'));
   const data = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [

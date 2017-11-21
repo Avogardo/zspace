@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom'
 
 import Charts from '../Charts';
 import AppBarComponent from './AppBarComponent';
@@ -63,6 +64,11 @@ class Main extends Component {
       <div>
         <Charts chartsConfigs={this.getChartsConfigs()} />
       </div>
+
+        <Switch>
+          <Route exact path='/' component={Charts}/>
+          <Route path='/:floor/:room' component={Charts}/>
+        </Switch>
       </div>
     );
   }

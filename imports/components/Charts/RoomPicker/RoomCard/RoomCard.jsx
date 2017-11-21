@@ -1,18 +1,13 @@
 import React from 'react';
-import {
-  Card,
-  CardActions,
-  CardHeader,
-  CardMedia,
-  CardTitle,
-  CardText,
-  FlatButton,
-  GridTile,
-} from 'material-ui';
+import { Link } from 'react-router-dom'
 
 
 getRoomsTiles = (rooms) => rooms.map(room =>
-  <div key={room.name + 'tile'} className="placeholder"><img src={room.image} alt={room.name} /></div>
+  <div key={room.name + 'tile'} className="placeholder">
+    <Link to={`/${room.name}/${room.name}`}>
+      <img src={room.image} alt={room.name} />
+    </Link>
+  </div>
 );
 
 const RoomCard = ({ rooms }) => (

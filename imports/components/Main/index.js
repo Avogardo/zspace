@@ -1,3 +1,17 @@
+import { FullPageLoader } from '/imports/components/Loaders';
+import { compose, composeWithTracker  } from 'react-komposer';
+
 import Main from './Main.jsx';
 
-export default Main;
+const composer = (props, onData) => {
+  console.log(props);
+
+  onData(null, {
+
+  });
+};
+
+export default compose(
+  composer,
+  FullPageLoader,
+)(Main);
