@@ -12,7 +12,6 @@ class Charts extends Component {
 
   createCharts() {
     const { chartsConfigs } = this.props;
-    console.log(chartsConfigs);
 
     return chartsConfigs.map((config, index) =>
         <div key={index + 'chart'} className={`${config.className} shadow chart`}>

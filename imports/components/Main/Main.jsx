@@ -64,10 +64,6 @@ class Main extends Component {
           updateCharts={() => this.refresh()}
         />
 
-      <div>
-        <Charts chartsConfigs={this.getChartsConfigs()} />
-      </div>
-
         <Switch>
           <Route path='/:roomId' component={Charts}/>
         </Switch>
