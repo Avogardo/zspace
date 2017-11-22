@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
 
+import { FullPageLoader } from '/imports/components/Loaders';
 import Charts from '../Charts';
 import AppBarComponent from './AppBarComponent';
 import floors from '../Charts/RoomPicker/floors.js';
@@ -28,19 +29,21 @@ class Main extends Component {
       floors.forEach(floor => {
         floor.rooms.forEach(room => {
           newChartsConfigs.push({
+            roomId: room.id,
             name: room.name,
             title: 'Temperatura',
             sensor: room.tSensor,
-            query: '',
-            className: '',
+            query: `db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${room.tSensor}') AND time >= 1511002183104ms and time <= 1511018311332ms&epoch=ms`,
+            className: 'tile',
           });
 
           newChartsConfigs.push({
+            roomId: room.id,
             name: room.name,
             title: 'Wilgotność',
             sensor: room.hSensor,
-            query: '',
-            className: '',
+            query: `db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${room.hSensor}') AND time >= 1511002183104ms and time <= 1511018311332ms&epoch=ms`,
+            className: 'long-tile',
           });
         });
       }); //todo move to helper
@@ -66,8 +69,7 @@ class Main extends Component {
       </div>
 
         <Switch>
-          <Route exact path='/' component={Charts}/>
-          <Route path='/:floor/:room' component={Charts}/>
+          <Route path='/:roomId' component={Charts}/>
         </Switch>
       </div>
     );

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 getRoomsTiles = (rooms) => rooms.map(room =>
   <div key={room.name + 'tile'} className="placeholder">
-    <Link to={`/${room.name}/${room.name}`}>
+    <Link to={`/${room.id}`}>
       <img src={room.image} alt={room.name} />
     </Link>
   </div>
