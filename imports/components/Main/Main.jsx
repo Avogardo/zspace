@@ -5,6 +5,7 @@ import { FullPageLoader } from '/imports/components/Loaders';
 import Charts from '../Charts';
 import AppBarComponent from './AppBarComponent';
 import floors from '../Charts/RoomPicker/floors.js';
+import { Redirect } from 'react-router-dom'
 
 class Main extends Component {
   constructor(props) {
@@ -63,6 +64,8 @@ class Main extends Component {
           openDialog={this.openDialog}
           updateCharts={() => this.refresh()}
         />
+
+        <Redirect to="/piwnica-pralnia" push />
 
         <Switch>
           <Route path='/:roomId' component={Charts}/>
