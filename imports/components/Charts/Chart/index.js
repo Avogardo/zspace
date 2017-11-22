@@ -18,6 +18,12 @@ const composer = ({ config }, onData) => {
     const chartData = sensorsHelpers.toChartData(result.data.results[0].series[0]);
     console.log(chartData);
 
+    const backgroundColor = config.title === 'Temperatura' ? '#EF5350' : '#5C6BC0';
+    const borderColor = config.title === 'Temperatura' ? '#C62828' : '#283593';
+    const pointBorderColor = config.title === 'Temperatura' ? '#B71C1C' : '#1A237E';
+    const pointHoverBackgroundColor = config.title === 'Temperatura' ? '#C62828' : '#283593';
+    const pointHoverBorderColor = config.title === 'Temperatura' ? '#B71C1C' : '#1A237E';
+
     const data = {
       labels: chartData.dates,
       datasets: [
@@ -25,18 +31,18 @@ const composer = ({ config }, onData) => {
           label: config.title,
           fill: false,
           lineTension: 0.1,
-          backgroundColor: '#EF5350',
-          borderColor: '#C62828',
+          backgroundColor,
+          borderColor,
           borderCapStyle: 'butt',
           borderDash: [],
           borderDashOffset: 0.0,
           borderJoinStyle: 'miter',
-          pointBorderColor: '#B71C1C',
+          pointBorderColor,
           pointBackgroundColor: '#fff',
           pointBorderWidth: 1,
           pointHoverRadius: 5,
-          pointHoverBackgroundColor: '#C62828',
-          pointHoverBorderColor: '#B71C1C',
+          pointHoverBackgroundColor,
+          pointHoverBorderColor,
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
