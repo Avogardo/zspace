@@ -1,10 +1,8 @@
 const toChartData = (chartData) => {
-    const dataWithTime = chartData.values.map(value => {
-        value[0] = formatDate(new Date(value[0]));
-        return value;
-    });
+    const values = chartData.values.map(value => value[1]);
+    const dates = chartData.values.map(value => formatDate(new Date(value[0])));
 
-    return [chartData.columns].concat(dataWithTime);
+    return {values, dates};
 };
 
 const formatDate = (date) => {
