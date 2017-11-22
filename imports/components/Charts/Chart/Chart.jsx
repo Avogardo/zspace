@@ -11,7 +11,7 @@ class Chart extends Component {
   render() {
     const { chartData, data } = this.props;
 
-    return ( <div>
+    return ( <div className="chart-wrapper">
         {chartData ?
           <Line data={data} />
           :
