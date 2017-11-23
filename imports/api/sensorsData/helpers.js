@@ -20,7 +20,8 @@ const formatDate = (date) => {
   const minutes = date.getMinutes();
   const seckonds = date.getSeconds();
 
-  return `${day} ${monthNames[monthIndex]} ${year} ${hour}:${minutes}:${seckonds}`;
+  return `${hour}:${minutes}:${seckonds}`;
+  // return `${day} ${monthNames[monthIndex]} ${year} ${hour}:${minutes}:${seckonds}`;
 }
 
 export const helpers = {

@@ -13,7 +13,7 @@ class Chart extends Component {
 
     return ( <div className="chart-wrapper">
         {chartData ?
-          <Line data={data} />
+          <Line data={data} height={200} options={{ maintainAspectRatio: false }} />
           :
           <CircularProgress/>
         }
