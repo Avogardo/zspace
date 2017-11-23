@@ -104,10 +104,6 @@ img:active {
   and (device-height: 640px)
   and (-webkit-device-pixel-ratio: 3)
   and (orientation: portrait) {
-body {
-    width: 360px;
-}
-
 .container {
     display: flex;
     flex-direction: column;
