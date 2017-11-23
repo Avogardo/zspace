@@ -24,6 +24,7 @@ const TableDataSchema = new SimpleSchema({
   },
   isLive: {
     type: Boolean,
+    optional: true,
   },
   period: {
     type: String,
