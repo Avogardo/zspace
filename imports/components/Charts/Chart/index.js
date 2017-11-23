@@ -14,9 +14,8 @@ const composer = ({ config }, onData) => {
 
   const apiUrl = baseUrl + query;
 
-  sensorsActions.get(apiUrl).then(result => {
+  sensorsActions.get(baseUrl, config).then(result => {
     const chartData = sensorsHelpers.toChartData(result.data.results[0].series[0]);
-    console.log(chartData);
 
     const backgroundColor = config.title === 'Temperatura' ? '#EF5350' : '#5C6BC0';
     const borderColor = config.title === 'Temperatura' ? '#C62828' : '#283593';
@@ -39,12 +38,12 @@ const composer = ({ config }, onData) => {
           borderJoinStyle: 'miter',
           pointBorderColor,
           pointBackgroundColor: '#fff',
-          pointBorderWidth: 1,
+          pointBorderWidth: 0,
           pointHoverRadius: 5,
           pointHoverBackgroundColor,
           pointHoverBorderColor,
           pointHoverBorderWidth: 2,
-          pointRadius: 1,
+          pointRadius: 0,
           pointHitRadius: 10,
           data: chartData.values,
         }

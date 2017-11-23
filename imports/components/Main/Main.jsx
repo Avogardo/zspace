@@ -22,10 +22,17 @@ class Main extends Component {
     });
   }
 
+  componentWillMount() {
+    this.getChartsConfigs();
+  }
+
   getChartsConfigs() {
     const chartsConfigs = JSON.parse(localStorage.getItem('charts-configs'));
 
     if (!chartsConfigs) {
+      const currentDate = new Date();
+      const unixTime = currentDate.getTime();
+
       const newChartsConfigs = [];
       floors.forEach(floor => {
         floor.rooms.forEach(room => {
@@ -34,8 +41,10 @@ class Main extends Component {
             name: room.name,
             title: 'Temperatura',
             sensor: room.tSensor,
-            query: `db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${room.tSensor}') AND time >= 1511002183104ms and time <= 1511018311332ms&epoch=ms`,
+            query: `db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${room.tSensor}') AND time >= `,
             className: 'tile',
+            isLive: true,
+            period: 86400000,
           });
 
           newChartsConfigs.push({
@@ -43,8 +52,10 @@ class Main extends Component {
             name: room.name,
             title: 'Wilgotność',
             sensor: room.hSensor,
-            query: `db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${room.hSensor}') AND time >= 1511002183104ms and time <= 1511018311332ms&epoch=ms`,
+            query: `db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${room.hSensor}') AND time >= 1511460198000ms and time <= ${unixTime}ms&epoch=ms`,
             className: 'long-tile',
+            isLive: false,
+            period: '',
           });
         });
       }); //todo move to helper
