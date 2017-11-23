@@ -27,7 +27,7 @@ const composer = ({ config }, onData) => {
       labels: chartData.dates,
       datasets: [
         {
-          label: `${config.name}: ${config.title}`,
+          label: `${config.name}: ${config.title} ${config.isLive ? '[LIVE]' : ''}`,
           fill: false,
           lineTension: 0.1,
           backgroundColor,
