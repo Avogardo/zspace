@@ -1,4 +1,14 @@
 const toChartData = (chartData) => {
+  console.log(chartData.values);
+  if (chartData.values.length > 90) {
+    let i = Math.floor(chartData.values.length / 3);
+    const data = chartData.values;
+    while (i--) {
+      data.splice((i + 1) * 3 - 1, 1);
+    }
+    console.log(chartData.values);
+  }
+
     const values = chartData.values.map(value => value[1]);
     const dates = chartData.values.map(value => {
       if (value[0] > 9999999999999) {
