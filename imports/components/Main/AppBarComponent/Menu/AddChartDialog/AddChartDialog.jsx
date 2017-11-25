@@ -7,6 +7,7 @@ import {
   Checkbox,
   DatePicker,
   Toggle,
+  CardText,
 } from 'material-ui';
 import floors from '/imports/components/Charts/RoomPicker/floors.js';
 
@@ -38,7 +39,7 @@ class AddChartDialog extends Component {
       isLive: true,
       isLongTile: false,
       isTemparature: true,
-      period: new Date(),
+      period: '',
       startDate: new Date(),
       endDate: new Date(),
     };
@@ -67,9 +68,11 @@ class AddChartDialog extends Component {
     const sensor = isTemparature ? room.tSensor : room.hSensor;
     const title = isTemparature ? 'Temperatura' : 'Wilgotność';
 
+    const currentDate = (new Date()).getTime();
+
     if (!period) {
       this.setState({
-        periodError: 'This field is required',
+        periodError: 'Brakuje daty',
       });
     } else {
       this.setState({
@@ -77,26 +80,30 @@ class AddChartDialog extends Component {
       });
     }
 
-    const newWidget = {
-      roomId: room.id,
-      name: room.name,
-      title,
-      sensor,
-      query: `db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${sensor}') AND time >= `,
-      className,
-      isLive,
-      period: 86400000,
+    if (period) {
+      const interval = currentDate - period.getTime();
+
+      const newWidget = {
+        roomId: room.id,
+        name: room.name,
+        title,
+        sensor,
+        query: `db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${sensor}') AND time >= `,
+        className,
+        isLive,
+        period: interval,
+      }
+
+      chartsConfigs.push(newWidget);
+      localStorage.setItem('charts-configs', JSON.stringify(chartsConfigs));
+
+      this.setState({
+        openSnackBar: true,
+      });
+
+      refreshCharts();
+      onClose();
     }
-
-    chartsConfigs.push(newWidget);
-    localStorage.setItem('charts-configs', JSON.stringify(chartsConfigs));
-
-    this.setState({
-      openSnackBar: true,
-    });
-
-    refreshCharts();
-    onClose();
   }
 
   onClose(e) {
@@ -104,7 +111,13 @@ class AddChartDialog extends Component {
 
     this.setState({
       periodError: '',
-      isLive: false,
+      openSnackBar: false,
+      isLive: true,
+      isLongTile: false,
+      isTemparature: true,
+      period: '',
+      startDate: new Date(),
+      endDate: new Date(),
     });
 
     onClose();
@@ -188,6 +201,15 @@ class AddChartDialog extends Component {
           open={open}
           onRequestClose={() => this.onClose()}
         >
+          {periodError ?
+            <CardText
+                color="red"
+            >
+                {periodError}
+            </CardText>
+            :
+            ''
+          }
           <Checkbox
             label="Na żywo"
             checked={isLive}

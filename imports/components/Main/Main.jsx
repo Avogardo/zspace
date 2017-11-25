@@ -55,7 +55,7 @@ class Main extends Component {
             query: `db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${room.hSensor}') AND time >= `,
             className: 'long-tile',
             isLive: true,
-            period: 86400000,
+            period: 99900000,
           });
 
           // newChartsConfigs.push({
