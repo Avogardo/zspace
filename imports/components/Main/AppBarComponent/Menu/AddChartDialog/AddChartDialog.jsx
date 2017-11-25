@@ -53,6 +53,7 @@ class AddChartDialog extends Component {
       isLongTile,
       isTemparature,
     } = this.state;
+    const chartsConfigs = JSON.parse(localStorage.getItem('charts-configs'));
     const roomId = window.location.pathname;
     const floor = floors.find(floor => 
       floor.rooms.find(room => 
@@ -86,13 +87,13 @@ class AddChartDialog extends Component {
       isLive,
       period: 86400000,
     }
-    console.log(newWidget);
+
+    chartsConfigs.push(newWidget);
+    localStorage.setItem('charts-configs', JSON.stringify(chartsConfigs));
 
     this.setState({
       openSnackBar: true,
     });
-
-    // localStorage.setItem('credentials', JSON.stringify(credentials));
 
     refreshCharts();
     onClose();
