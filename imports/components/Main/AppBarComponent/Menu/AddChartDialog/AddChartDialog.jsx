@@ -4,26 +4,35 @@ import {
   Dialog,
   TextField,
   Snackbar,
+  Checkbox,
 } from 'material-ui';
 
+
+const styles = {
+  checkbox: {
+    marginTop: 12,
+  },
+};
 
 class AddChartDialog extends Component {
   constructor(props) {
     super(props);
 
     this.handleRequestClose = this.handleRequestClose.bind(this);
+    this.updateCheck = this.updateCheck.bind(this);
 
     const credentials = JSON.parse(localStorage.getItem('credentials'));
 
     this.state = {
       periodError: '',
       openSnackBar: false,
+      isLive: false,
     };
   }
 
   onSubmit(e) {
     e.preventDefault();
-    const { refreshCharts, onClose } = this.props;
+    const { refreshCharts, onClose, isLive } = this.props;
     const { period } = this.state;
 
     if (!period) {
@@ -36,16 +45,16 @@ class AddChartDialog extends Component {
       });
     }
 
-      console.log('submit');
+    console.log('submit');
 
-      this.setState({
-        openSnackBar: true,
-      });
+    this.setState({
+      openSnackBar: true,
+    });
 
-      // localStorage.setItem('credentials', JSON.stringify(credentials));
-
-      refreshCharts();
-      onClose();
+    // localStorage.setItem('credentials', JSON.stringify(credentials));
+    
+    refreshCharts();
+    onClose();
   }
 
   onClose(e) {
@@ -53,6 +62,7 @@ class AddChartDialog extends Component {
 
     this.setState({
       periodError: '',
+      isLive: false,
     });
 
     onClose();
@@ -70,11 +80,20 @@ class AddChartDialog extends Component {
     });
   };
 
+  updateCheck() {
+    this.setState((oldState) => {
+      return {
+        isLive: !oldState.isLive,
+      };
+    });
+  }
+
   render() {
     const { open } = this.props;
     const {
       periodError,
       openSnackBar,
+      isLive,
     } = this.state;
 
     const actions = [
@@ -97,6 +116,12 @@ class AddChartDialog extends Component {
           open={open}
           onRequestClose={() => this.onClose()}
         >
+          <Checkbox
+            label="Na żywo"
+            checked={isLive}
+            onCheck={this.updateCheck}
+            style={styles.checkbox}
+          />
           <TextField
             floatingLabelText="Okres"
             errorText={periodError}

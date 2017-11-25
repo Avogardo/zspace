@@ -1,5 +1,4 @@
 const toChartData = (chartData) => {
-  console.log(chartData.values);
   if (chartData.values.length > 90) {
     let i = Math.floor(chartData.values.length / 3);
     const data = chartData.values;
