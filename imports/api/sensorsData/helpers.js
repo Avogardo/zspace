@@ -6,7 +6,6 @@ const toChartData = (chartData) => {
     while (i--) {
       data.splice((i + 1) * 3 - 1, 1);
     }
-    console.log(chartData.values);
   }
 
     const values = chartData.values.map(value => value[1]);

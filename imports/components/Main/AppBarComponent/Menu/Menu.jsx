@@ -5,7 +5,7 @@ import MenuItem from 'material-ui/MenuItem';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 
-const Menu = ({ openDialog }) => (
+const Menu = ({ openDialog, openAddDialog }) => (
   <IconMenu
     iconButtonElement={
       <IconButton iconStyle={{color: 'rgb(255, 255, 255)'}}><MoreVertIcon /></IconButton>
@@ -13,6 +13,7 @@ const Menu = ({ openDialog }) => (
     targetOrigin={{horizontal: 'right', vertical: 'top'}}
     anchorOrigin={{horizontal: 'right', vertical: 'top'}}
   >
+    <MenuItem primaryText="Nowy wykres" onTouchTap={openAddDialog} />
     <MenuItem primaryText="Ustawienia" onTouchTap={openDialog} />
   </IconMenu>
 );

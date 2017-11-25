@@ -7,21 +7,16 @@ import {
 } from 'material-ui';
 
 
-class MenuDialog extends Component {
+class AddChartDialog extends Component {
   constructor(props) {
     super(props);
 
     this.handleRequestClose = this.handleRequestClose.bind(this);
 
     const credentials = JSON.parse(localStorage.getItem('credentials'));
-    const graphanaName = credentials ? credentials.graphanaName : '';
-    const authenticationHeader = credentials ? credentials.authenticationHeader : '';
 
     this.state = {
-      graphanaName,
-      authenticationHeader,
-      graphanaNameError: '',
-      authenticationHeaderError: '',
+      periodError: '',
       openSnackBar: false,
     };
   }
@@ -29,64 +24,43 @@ class MenuDialog extends Component {
   onSubmit(e) {
     e.preventDefault();
     const { refreshCharts, onClose } = this.props;
-    const { graphanaName, authenticationHeader } = this.state;
+    const { period } = this.state;
 
-    if (!graphanaName) {
+    if (!period) {
       this.setState({
-        graphanaNameError: 'This field is required',
+        periodError: 'This field is required',
       });
     } else {
       this.setState({
-        graphanaNameError: '',
-      });
-    }
-    if (!authenticationHeader) {
-      this.setState({
-        authenticationHeaderError: 'This field is required',
-      });
-    } else {
-      this.setState({
-        authenticationHeaderError: '',
+        periodError: '',
       });
     }
 
-    if (authenticationHeader && graphanaName) {
-      const credentials = {
-        graphanaName,
-        authenticationHeader,
-      }
+      console.log('submit');
 
       this.setState({
         openSnackBar: true,
       });
 
-      localStorage.setItem('credentials', JSON.stringify(credentials));
+      // localStorage.setItem('credentials', JSON.stringify(credentials));
 
       refreshCharts();
       onClose();
-    }
   }
 
   onClose(e) {
     const { onClose } = this.props;
 
     this.setState({
-      graphanaNameError: '',
-      authenticationHeaderError: '',
+      periodError: '',
     });
 
     onClose();
   }
 
-  onChangeName(e) {
-    this.setState({
-      graphanaName: e.target.value,
-    });
-  }
-
   onChangeHeader(e) {
     this.setState({
-      authenticationHeader: e.target.value,
+      period: e.target.value,
     });
   }
 
@@ -99,10 +73,7 @@ class MenuDialog extends Component {
   render() {
     const { open } = this.props;
     const {
-      graphanaName,
-      authenticationHeader,
-      graphanaNameError,
-      authenticationHeaderError,
+      periodError,
       openSnackBar,
     } = this.state;
 
@@ -121,28 +92,21 @@ class MenuDialog extends Component {
     return (
       <div>
         <Dialog
-          title="Ustawienia"
+          title="Stwórz wykres"
           actions={actions}
           open={open}
           onRequestClose={() => this.onClose()}
         >
           <TextField
-            floatingLabelText="Nickname z graphany"
-            value={graphanaName}
-            errorText={graphanaNameError}
-            onChange={e => this.onChangeName(e)}
-          />
-          <TextField
-            floatingLabelText="Token"
-            value={authenticationHeader}
-            errorText={authenticationHeaderError}
+            floatingLabelText="Okres"
+            errorText={periodError}
             onChange={e => this.onChangeHeader(e)}
           />
         </Dialog>
 
         <Snackbar
           open={openSnackBar}
-          message="Zapisano zmiany!"
+          message="Utworzono wykres!"
           autoHideDuration={4000}
           onRequestClose={this.handleRequestClose}
         />
@@ -151,4 +115,4 @@ class MenuDialog extends Component {
   }
 }
 
-export default MenuDialog;
+export default AddChartDialog;
