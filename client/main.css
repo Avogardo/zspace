@@ -76,9 +76,16 @@ img:active {
 .chart-wrapper {
     width: 100%;
     height: 100%;
-        display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+.menu-button {
+    position: absolute;
+    top: -10px;
+    right: -10px;
 }
 
 @media (max-width: 800px)  {

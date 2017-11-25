@@ -33,4 +33,3 @@ class Charts extends Component {
 }
 
 export default Charts;
-
