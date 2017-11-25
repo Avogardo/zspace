@@ -5,6 +5,7 @@ import {
   TextField,
   Snackbar,
   Checkbox,
+  DatePicker,
 } from 'material-ui';
 
 
@@ -52,7 +53,7 @@ class AddChartDialog extends Component {
     });
 
     // localStorage.setItem('credentials', JSON.stringify(credentials));
-    
+
     refreshCharts();
     onClose();
   }
@@ -122,11 +123,24 @@ class AddChartDialog extends Component {
             onCheck={this.updateCheck}
             style={styles.checkbox}
           />
-          <TextField
-            floatingLabelText="Okres"
-            errorText={periodError}
-            onChange={e => this.onChangeHeader(e)}
-          />
+          {isLive ?
+            <DatePicker
+              autoOk
+              floatingLabelText="Okres"
+            />
+            :
+            <div className="form-date-picker">
+              <DatePicker
+                autoOk
+                floatingLabelText="Data początkowa"
+              />
+              <DatePicker
+                autoOk
+                floatingLabelText="Data końcowa"
+              />
+            </div>
+          }
+
         </Dialog>
 
         <Snackbar
@@ -141,3 +155,9 @@ class AddChartDialog extends Component {
 }
 
 export default AddChartDialog;
+
+            // <TextField
+              // floatingLabelText="Okres"
+              // errorText={periodError}
+              // onChange={e => this.onChangeHeader(e)}
+            // />
