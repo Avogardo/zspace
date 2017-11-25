@@ -22,12 +22,19 @@ class AddChartDialog extends Component {
     this.handleRequestClose = this.handleRequestClose.bind(this);
     this.updateCheck = this.updateCheck.bind(this);
 
+    this.changeStartDate = this.changeStartDate.bind(this);
+    this.changeEndDate = this.changeEndDate.bind(this);
+    this.changePeriod = this.changePeriod.bind(this);
+
     const credentials = JSON.parse(localStorage.getItem('credentials'));
 
     this.state = {
       periodError: '',
       openSnackBar: false,
-      isLive: false,
+      isLive: true,
+      period: new Date(),
+      startDate: new Date(),
+      endDate: new Date(),
     };
   }
 
@@ -69,12 +76,6 @@ class AddChartDialog extends Component {
     onClose();
   }
 
-  onChangeHeader(e) {
-    this.setState({
-      period: e.target.value,
-    });
-  }
-
   handleRequestClose() {
     this.setState({
       openSnackBar: false,
@@ -86,6 +87,24 @@ class AddChartDialog extends Component {
       return {
         isLive: !oldState.isLive,
       };
+    });
+  }
+
+  changeStartDate(event, date) {
+    this.setState({
+      startDate: date,
+    });
+  }
+
+  changeEndDate(event, date) {
+    this.setState({
+      endDate: date,
+    });
+  }
+
+  changePeriod(event, date) {
+    this.setState({
+      period: date,
     });
   }
 
@@ -126,21 +145,23 @@ class AddChartDialog extends Component {
           {isLive ?
             <DatePicker
               autoOk
+              onChange={this.changePeriod}
               floatingLabelText="Okres"
             />
             :
             <div className="form-date-picker">
               <DatePicker
                 autoOk
+                onChange={this.changeStartDate}
                 floatingLabelText="Data początkowa"
               />
               <DatePicker
                 autoOk
+                onChange={this.changeEndDate}
                 floatingLabelText="Data końcowa"
               />
             </div>
           }
-
         </Dialog>
 
         <Snackbar
@@ -156,6 +177,11 @@ class AddChartDialog extends Component {
 
 export default AddChartDialog;
 
+  // onChangeHeader(e) {
+  //   this.setState({
+  //     period: e.target.value,
+  //   });
+  // }
             // <TextField
               // floatingLabelText="Okres"
               // errorText={periodError}
