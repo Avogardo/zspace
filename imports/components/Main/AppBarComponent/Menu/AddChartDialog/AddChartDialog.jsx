@@ -8,6 +8,7 @@ import {
   DatePicker,
   Toggle,
 } from 'material-ui';
+import floors from '/imports/components/Charts/RoomPicker/floors.js';
 
 
 const styles = {
@@ -43,8 +44,18 @@ class AddChartDialog extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const { refreshCharts, onClose, isLive } = this.props;
-    const { period } = this.state;
+    const { refreshCharts, onClose } = this.props;
+    const { period, isLive, isLongTile } = this.state;
+    const roomId = window.location.pathname;
+    const floor = floors.find(floor => 
+      floor.rooms.find(room => 
+        room.id === roomId.replace('/', '')
+      )
+    );
+    const room = floor.rooms.find(room => 
+      room.id === roomId.replace('/', '')
+    )
+    const className = isLongTile ? 'long-tile' : 'tile';
 
     if (!period) {
       this.setState({
@@ -56,7 +67,17 @@ class AddChartDialog extends Component {
       });
     }
 
-    console.log('submit');
+    // const newWidget = {
+    //   roomId,
+    //   name: room.name,
+    //   title: 'Wilgotność',
+    //   sensor: '',
+    //   query: `db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${room.hSensor}') AND time >= `,
+    //   className,
+    //   isLive,
+    //   period: 86400000,
+    // }
+    // console.log(newWidget);
 
     this.setState({
       openSnackBar: true,
