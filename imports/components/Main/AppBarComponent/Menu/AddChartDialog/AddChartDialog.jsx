@@ -6,6 +6,7 @@ import {
   Snackbar,
   Checkbox,
   DatePicker,
+  Toggle,
 } from 'material-ui';
 
 
@@ -21,6 +22,7 @@ class AddChartDialog extends Component {
 
     this.handleRequestClose = this.handleRequestClose.bind(this);
     this.updateCheck = this.updateCheck.bind(this);
+    this.changeToggle = this.changeToggle.bind(this);
 
     this.changeStartDate = this.changeStartDate.bind(this);
     this.changeEndDate = this.changeEndDate.bind(this);
@@ -32,6 +34,7 @@ class AddChartDialog extends Component {
       periodError: '',
       openSnackBar: false,
       isLive: true,
+      isLongTile: false,
       period: new Date(),
       startDate: new Date(),
       endDate: new Date(),
@@ -90,6 +93,14 @@ class AddChartDialog extends Component {
     });
   }
 
+  changeToggle() {
+    this.setState((oldState) => {
+      return {
+        isLongTile: !oldState.isLongTile,
+      };
+    });
+  }
+
   changeStartDate(event, date) {
     this.setState({
       startDate: date,
@@ -114,6 +125,7 @@ class AddChartDialog extends Component {
       periodError,
       openSnackBar,
       isLive,
+      isLongTile,
     } = this.state;
 
     const actions = [
@@ -142,6 +154,13 @@ class AddChartDialog extends Component {
             onCheck={this.updateCheck}
             style={styles.checkbox}
           />
+          <div className="toggle">
+            <Toggle
+              label={isLongTile ? "Duży wykres" : "Mały wykres"}
+              labelPosition="right"
+              onToggle={this.changeToggle}
+            />
+          </div>
           {isLive ?
             <DatePicker
               autoOk
@@ -176,14 +195,3 @@ class AddChartDialog extends Component {
 }
 
 export default AddChartDialog;
-
-  // onChangeHeader(e) {
-  //   this.setState({
-  //     period: e.target.value,
-  //   });
-  // }
-            // <TextField
-              // floatingLabelText="Okres"
-              // errorText={periodError}
-              // onChange={e => this.onChangeHeader(e)}
-            // />
