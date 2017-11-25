@@ -24,6 +24,7 @@ class AddChartDialog extends Component {
     this.handleRequestClose = this.handleRequestClose.bind(this);
     this.updateCheck = this.updateCheck.bind(this);
     this.changeToggle = this.changeToggle.bind(this);
+    this.changeSensorToggle = this.changeSensorToggle.bind(this);
 
     this.changeStartDate = this.changeStartDate.bind(this);
     this.changeEndDate = this.changeEndDate.bind(this);
@@ -36,6 +37,7 @@ class AddChartDialog extends Component {
       openSnackBar: false,
       isLive: true,
       isLongTile: false,
+      isTemparature: true,
       period: new Date(),
       startDate: new Date(),
       endDate: new Date(),
@@ -45,7 +47,12 @@ class AddChartDialog extends Component {
   onSubmit(e) {
     e.preventDefault();
     const { refreshCharts, onClose } = this.props;
-    const { period, isLive, isLongTile } = this.state;
+    const {
+      period,
+      isLive,
+      isLongTile,
+      isTemparature,
+    } = this.state;
     const roomId = window.location.pathname;
     const floor = floors.find(floor => 
       floor.rooms.find(room => 
@@ -56,6 +63,8 @@ class AddChartDialog extends Component {
       room.id === roomId.replace('/', '')
     )
     const className = isLongTile ? 'long-tile' : 'tile';
+    const sensor = isTemparature ? room.tSensor : room.hSensor;
+    const title = isTemparature ? 'Temperatura' : 'Wilgotność';
 
     if (!period) {
       this.setState({
@@ -67,17 +76,17 @@ class AddChartDialog extends Component {
       });
     }
 
-    // const newWidget = {
-    //   roomId,
-    //   name: room.name,
-    //   title: 'Wilgotność',
-    //   sensor: '',
-    //   query: `db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${room.hSensor}') AND time >= `,
-    //   className,
-    //   isLive,
-    //   period: 86400000,
-    // }
-    // console.log(newWidget);
+    const newWidget = {
+      roomId: room.id,
+      name: room.name,
+      title,
+      sensor,
+      query: `db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${sensor}') AND time >= `,
+      className,
+      isLive,
+      period: 86400000,
+    }
+    console.log(newWidget);
 
     this.setState({
       openSnackBar: true,
@@ -122,6 +131,14 @@ class AddChartDialog extends Component {
     });
   }
 
+  changeSensorToggle() {
+    this.setState((oldState) => {
+      return {
+        isTemparature: !oldState.isTemparature,
+      };
+    });
+  }
+
   changeStartDate(event, date) {
     this.setState({
       startDate: date,
@@ -147,6 +164,7 @@ class AddChartDialog extends Component {
       openSnackBar,
       isLive,
       isLongTile,
+      isTemparature,
     } = this.state;
 
     const actions = [
@@ -180,6 +198,13 @@ class AddChartDialog extends Component {
               label={isLongTile ? "Duży wykres" : "Mały wykres"}
               labelPosition="right"
               onToggle={this.changeToggle}
+            />
+          </div>
+          <div className="toggle">
+            <Toggle
+              label={isTemparature ? "Temperatura" : "Wilgotność"}
+              labelPosition="right"
+              onToggle={this.changeSensorToggle}
             />
           </div>
           {isLive ?
