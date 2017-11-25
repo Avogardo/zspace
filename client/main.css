@@ -96,13 +96,15 @@ img:active {
     justify-content: space-between;
 }
 
+.long-tile {
+    margin-left: 5px;
+    width: 98%;
+    height: 450px;
+}
+
 .tile {
     width: 98%;
 }
-
-/*.left-tile {
-    margin-right: 0;
-}*/
 
 }
 
@@ -115,6 +117,12 @@ img:active {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.long-tile {
+    margin-left: 5px;
+    width: 98%;
+    height: 450px;
 }
 
 .tile {
