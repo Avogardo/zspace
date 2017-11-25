@@ -14,6 +14,7 @@ const Menu = ({ openDialog, openAddDialog }) => (
     anchorOrigin={{horizontal: 'right', vertical: 'top'}}
   >
     <MenuItem primaryText="Nowy wykres" onTouchTap={openAddDialog} />
+    <MenuItem primaryText="Tryb edycji" onTouchTap={() => {}} />
     <MenuItem primaryText="Ustawienia" onTouchTap={openDialog} />
   </IconMenu>
 );
