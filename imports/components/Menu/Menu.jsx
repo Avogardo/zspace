@@ -17,15 +17,11 @@ const Menu = ({ color, menuItems }) => (
   </IconMenu>
 );
 
-const showMenuItems = menuItems => 
-  menuItems.map((item, index) => 
+const showMenuItems = menuItems =>
+  menuItems.map((item, index) =>
     <MenuItem key={`item${index}Menu${item.name}`} primaryText={item.name} onTouchTap={item.action} />
-  )
+  );
 
 Menu.muiName = 'IconMenu';
 
 export default Menu;
-
-    // <MenuItem primaryText="Nowy wykres" onTouchTap={openAddDialog} />
-    // <MenuItem primaryText="Tryb edycji" onTouchTap={() => {}} />
-    // <MenuItem primaryText="Ustawienia" onTouchTap={openDialog} />
