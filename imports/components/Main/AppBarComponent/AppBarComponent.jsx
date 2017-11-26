@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Menu from './Menu';
-import MenuDialog from './Menu/MenuDialog';
-import AddChartDialog from './Menu/AddChartDialog';
+import Menu from '/imports/components/Menu';
+import MenuDialog from '/imports/components/Menu/MenuDialog';
+import AddChartDialog from '/imports/components/Menu/AddChartDialog';
 
 import { AppBar } from 'material-ui';
 
@@ -42,6 +42,18 @@ class AppBarComponent extends Component {
     const { updateCharts } = this.props;
     const { showAddDialog, showMenuDialog } = this.state;
 
+    const color = 'rgb(255, 255, 255)'
+    const menuItems = [{
+      name: 'Nowy wykres',
+      action: this.openAddDialog,
+    }, {
+      name: 'Tryb edycji',
+      action: () => {console.log('test')},
+    }, {
+      name: 'Ustawienia',
+      action: this.openDialog,
+    }];
+
     return (
       <div>
         <AppBar
@@ -49,8 +61,8 @@ class AppBarComponent extends Component {
           showMenuIconButton={false}
           iconElementRight={
             <Menu 
-              openDialog={this.openDialog}
-              openAddDialog={this.openAddDialog}
+              color={color}
+              menuItems={menuItems}
             />
           }
         />

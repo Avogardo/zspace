@@ -57,17 +57,6 @@ class Main extends Component {
             isLive: true,
             period: 99900000,
           });
-
-          // newChartsConfigs.push({
-          //   roomId: room.id,
-          //   name: room.name,
-          //   title: 'Wilgotność',
-          //   sensor: room.hSensor,
-          //   query: `db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${room.hSensor}') AND time >= 1511400000000ms and time <= ${unixTime}ms&epoch=ms`,
-          //   className: 'long-tile',
-          //   isLive: false,
-          //   period: '',
-          // });
         });
       }); //todo move to helper
 
