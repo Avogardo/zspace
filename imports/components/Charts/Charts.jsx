@@ -8,14 +8,27 @@ import Chart from './Chart';
 class Charts extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      refresh: false,
+    };
+  }
+
+  refresh() {
+    this.setState({
+      refresh: true,
+    });
   }
 
   createCharts() {
-    const { chartsConfigs } = this.props;
+    const { roomId } = this.props;
+
+    const charts = JSON.parse(localStorage.getItem('charts-configs'));
+    const chartsConfigs = charts.filter(config => config.roomId === roomId);
 
     return chartsConfigs.map((config, index) =>
         <div key={index + 'chart'} className={`${config.className} shadow chart`}>
-          <Chart config={config} />
+          <Chart config={config} updateCharts={() => this.refresh()} />
         </div>
     );
   }

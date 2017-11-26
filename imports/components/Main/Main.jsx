@@ -35,8 +35,9 @@ class Main extends Component {
 
       const newChartsConfigs = [];
       floors.forEach(floor => {
-        floor.rooms.forEach(room => {
+        floor.rooms.forEach((room, index) => {
           newChartsConfigs.push({
+            id: `D${(new Date()).getTime()}${Math.random()}${index}`,
             roomId: room.id,
             name: room.name,
             title: 'Temperatura',
@@ -48,6 +49,7 @@ class Main extends Component {
           });
 
           newChartsConfigs.push({
+            id: `D${(new Date()).getTime()}${Math.random()}${index}`,
             roomId: room.id,
             name: room.name,
             title: 'Wilgotność',

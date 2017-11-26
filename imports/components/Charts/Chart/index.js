@@ -51,8 +51,8 @@ const composer = ({ config }, onData) => {
     };
 
     onData(null, {
-      chartData,
       data,
+      config,
     });
   }).catch(error => {
       console.log(error);

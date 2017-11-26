@@ -58,12 +58,12 @@ class AddChartDialog extends Component {
     } = this.state;
     const chartsConfigs = JSON.parse(localStorage.getItem('charts-configs'));
     const roomId = window.location.pathname;
-    const floor = floors.find(floor => 
-      floor.rooms.find(room => 
+    const floor = floors.find(floor =>
+      floor.rooms.find(room =>
         room.id === roomId.replace('/', '')
       )
     );
-    const room = floor.rooms.find(room => 
+    const room = floor.rooms.find(room =>
       room.id === roomId.replace('/', '')
     )
     const className = isLongTile ? 'long-tile' : 'tile';
@@ -84,13 +84,14 @@ class AddChartDialog extends Component {
 
     if (period || (startDate && endDate)) {
       const interval = period ? currentDate - period.getTime() : '';
-      const query = isLive ? 
+      const query = isLive ?
         `db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${sensor}') AND time >= `
         :
         `db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${sensor}') AND time >= ${startDate.getTime()}ms and time <= ${endDate.getTime()}ms&epoch=ms`
       ;
 
       const newWidget = {
+        id: `N${chartsConfigs.length}${Math.random()}${currentDate}`,
         roomId: room.id,
         name: room.name,
         title,
