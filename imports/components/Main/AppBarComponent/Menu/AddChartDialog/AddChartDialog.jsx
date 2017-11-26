@@ -40,19 +40,21 @@ class AddChartDialog extends Component {
       isLongTile: false,
       isTemparature: true,
       period: '',
-      startDate: new Date(),
-      endDate: new Date(),
+      startDate: '',
+      endDate: '',
     };
   }
 
   onSubmit(e) {
     e.preventDefault();
-    const { refreshCharts, onClose } = this.props;
+    const { refreshCharts } = this.props;
     const {
       period,
       isLive,
       isLongTile,
       isTemparature,
+      startDate,
+      endDate,
     } = this.state;
     const chartsConfigs = JSON.parse(localStorage.getItem('charts-configs'));
     const roomId = window.location.pathname;
@@ -70,7 +72,7 @@ class AddChartDialog extends Component {
 
     const currentDate = (new Date()).getTime();
 
-    if (!period) {
+    if (!period || (!startDate && !endDate)) {
       this.setState({
         periodError: 'Brakuje daty',
       });
@@ -80,15 +82,20 @@ class AddChartDialog extends Component {
       });
     }
 
-    if (period) {
-      const interval = currentDate - period.getTime();
+    if (period || (startDate && endDate)) {
+      const interval = period ? currentDate - period.getTime() : '';
+      const query = isLive ? 
+        `db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${sensor}') AND time >= `
+        :
+        `db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${sensor}') AND time >= ${startDate.getTime()}ms and time <= ${endDate.getTime()}ms&epoch=ms`
+      ;
 
       const newWidget = {
         roomId: room.id,
         name: room.name,
         title,
         sensor,
-        query: `db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${sensor}') AND time >= `,
+        query,
         className,
         isLive,
         period: interval,
@@ -102,7 +109,7 @@ class AddChartDialog extends Component {
       });
 
       refreshCharts();
-      onClose();
+      this.onClose();
     }
   }
 
@@ -111,13 +118,12 @@ class AddChartDialog extends Component {
 
     this.setState({
       periodError: '',
-      openSnackBar: false,
       isLive: true,
       isLongTile: false,
       isTemparature: true,
       period: '',
-      startDate: new Date(),
-      endDate: new Date(),
+      startDate: '',
+      endDate: '',
     });
 
     onClose();
