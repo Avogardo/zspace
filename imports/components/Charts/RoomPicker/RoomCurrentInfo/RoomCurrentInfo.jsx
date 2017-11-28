@@ -6,12 +6,12 @@ const RoomCurrentInfo = ({ name, temperature, humidity }) => (
   <div className="room-current-info-wrapper">
     { name && temperature && humidity ?
       <p>
-        <b>[Live] {name}:</b> temperatura: <b>{temperature}°C</b>, wilgotność: <b>{humidity}%</b>
+        <b>{name}:</b> temperatura: <b>{temperature}°C</b>, wilgotność: <b>{humidity}%</b>
       </p>
       :
-      <p>
+      <div className="circular-progress-wrapper">
         <CircularProgress size={20} />
-      </p>
+      </div>
     }
   </div>
 );

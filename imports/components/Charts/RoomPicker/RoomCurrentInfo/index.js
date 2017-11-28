@@ -5,9 +5,9 @@ import { actions as sensorsActions } from '/imports/api/sensorsData';
 import { helpers as sensorsHelpers } from '/imports/api/sensorsData';
 
 import RoomCurrentInfo from './RoomCurrentInfo.jsx';
+import floors from '../floors.js';
 
-
-const composer = ({ floors }, onData) => {
+const composer = (props, onData) => {
   const roomId = window.location.pathname.replace('/', '');
   const rooms = [];
 

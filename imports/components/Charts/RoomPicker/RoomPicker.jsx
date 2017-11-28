@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Tabs, Tab, Divider  } from 'material-ui';
+import { Tabs, Tab } from 'material-ui';
 import SwipeableViews from 'react-swipeable-views';
 
 import floors from './floors.js';
@@ -66,8 +66,6 @@ class RoomPicker extends React.Component {
         >
           {this.getRooms()}
         </SwipeableViews>
-        <Divider />
-        <RoomCurrentInfo floors={floors} />
       </div>
     );
   }
