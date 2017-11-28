@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Tabs, Tab } from 'material-ui';
+import { Tabs, Tab, Divider  } from 'material-ui';
 import SwipeableViews from 'react-swipeable-views';
 
 import floors from './floors.js';
 import RoomCard from './RoomCard';
+import RoomCurrentInfo from './RoomCurrentInfo';
 
 
 const styles = {
@@ -65,9 +66,13 @@ class RoomPicker extends React.Component {
         >
           {this.getRooms()}
         </SwipeableViews>
+        <Divider />
+        <RoomCurrentInfo floors={floors} />
       </div>
     );
   }
 }
 
 export default RoomPicker;
+
+// height : 389,75

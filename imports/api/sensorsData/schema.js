@@ -31,6 +31,13 @@ const TableDataSchema = new SimpleSchema({
   },
 });
 
+const currentDataSchema = new SimpleSchema({
+  sensor: {
+    type: String,
+  },
+});
+
 export {
   TableDataSchema,
+  currentDataSchema,
 };
