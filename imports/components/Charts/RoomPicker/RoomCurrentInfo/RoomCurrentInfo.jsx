@@ -6,7 +6,7 @@ const RoomCurrentInfo = ({ name, temperature, humidity }) => (
   <div className="room-current-info-wrapper">
     { name && temperature && humidity ?
       <p>
-        <b>{name}:</b> temperatura: <b>{temperature}°C</b>, wilgotność: <b>{humidity}%</b>
+        <b>[Live] {name}:</b> temperatura: <b>{temperature}°C</b>, wilgotność: <b>{humidity}%</b>
       </p>
       :
       <p>
