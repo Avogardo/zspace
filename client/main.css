@@ -157,6 +157,21 @@ img:active {
     padding-bottom: 11px;
 }
 
+img {
+    width: 80px;
+    height: 80px;
+}
+
+img:active {
+    width: 72px;
+    height: 72px;
+}
+
+.placeholder {
+    width: 90px;
+    height: 90px;
+}
+
 }
 
 @media (max-width: 1307px)  {
@@ -168,7 +183,11 @@ img:active {
 
 }
 
-@media screen
+/*////////////////////////////////////*/
+/*////////////// MOBILES /////////////*/
+/*////////////////////////////////////*/
+
+/*@media screen
   and (device-width: 360px)
   and (device-height: 640px)
   and (-webkit-device-pixel-ratio: 3)
@@ -193,4 +212,4 @@ img:active {
     width: 98%;
     max-height: 800px;
 }
-}
+}*/
