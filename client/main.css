@@ -3,6 +3,11 @@ table {
     border: 1px solid black;
 }
 
+body {
+    font-family: roboto;
+    font-size: 16px;
+}
+
 img {
     width: 100px;
     height: 100px;
@@ -58,7 +63,7 @@ img:active {
     margin-top: 10px;
     margin-right: 5px;
     margin-left: 5px;
-    height: 360px;
+    min-height: 360px;
 }
 
 .long-tile {
@@ -111,10 +116,10 @@ img:active {
 
 .circular-progress-wrapper {
     padding-top: 19px;
-    padding-bottom: 7px;
+    padding-bottom: 8px;
 }
 
-@media (max-width: 825px)  {
+@media (max-width: 842px)  {
 
 .container {
     display: flex;
@@ -139,6 +144,15 @@ img:active {
 .circular-progress-wrapper {
     padding-top: 15px;
     padding-bottom: 11px;
+}
+
+}
+
+@media (max-width: 1307px)  {
+
+.circular-progress-wrapper {
+    padding-top: 13px;
+    padding-bottom: 13px;
 }
 
 }
