@@ -14,8 +14,8 @@ const get = (baseUrl, config) => new Promise((resolve, reject) => {
   });
 });
 
-const getCurrent = (sensor) => new Promise((resolve, reject) => {
-  getCurrentData.call({ sensor }, (err, res) => {
+const getCurrent = (sensor, userName) => new Promise((resolve, reject) => {
+  getCurrentData.call({ sensor, userName }, (err, res) => {
     if (err) {
       const error = new Error(err.reason || err);
       console.log(err);

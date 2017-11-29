@@ -35,6 +35,9 @@ const currentDataSchema = new SimpleSchema({
   sensor: {
     type: String,
   },
+  userName: {
+    type: String,
+  },
 });
 
 export {

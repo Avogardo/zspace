@@ -43,19 +43,19 @@ const httpGetAsync = (baseUrl, roomId, name, title, sensor, query, className, is
 export const getCurrentData = new ValidatedMethod({
   name: 'get.current.data',
   validate: currentDataSchema.validator({ clean: true }),
-  run({ sensor }) {
+  run({ sensor, userName }) {
     if (Meteor.isServer) {
-      return httpGetCurrentAsync(sensor);
+      return httpGetCurrentAsync(sensor, userName);
     }
   },
 });
 
-const httpGetCurrentAsync = (sensor) => {
+const httpGetCurrentAsync = (sensor, userName) => {
   const currentDate = new Date();
   const unixTime = currentDate.getTime();
   const backTime = currentDate - 1617389;
 
-  url = `https://avogardo.grafana.net/api/datasources/proxy/4/query?db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${sensor}') AND time >= ${backTime}ms and time <= ${unixTime}ms&epoch=ms`;
+  url = `https://${userName}.grafana.net/api/datasources/proxy/4/query?db=pomiary_test&q=SELECT "value" FROM "pomiary_test" WHERE ("sensor" = '${sensor}') AND time >= ${backTime}ms and time <= ${unixTime}ms&epoch=ms`;
 
   return new Promise((resolve, reject) => {
       HTTP.call('GET', url, {
