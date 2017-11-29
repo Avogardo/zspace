@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Line } from 'react-chartjs-2';
-import { CircularProgress } from 'material-ui';
+import { CircularProgress, Snackbar } from 'material-ui';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import Menu from '/imports/components/Menu';
@@ -14,6 +14,11 @@ class Chart extends Component {
   constructor(props) {
     super(props);
     this.removeChart = this.removeChart.bind(this);
+    this.handleRequestClose = this.handleRequestClose.bind(this);
+
+    this.state = {
+      openSnackBar: false,
+    };
   }
 
   removeChart() {
@@ -22,13 +27,23 @@ class Chart extends Component {
 
     const newConfigs = chartsConfigs.filter(item => item.id !== config.id);
     localStorage.setItem('charts-configs', JSON.stringify(newConfigs));
-    updateCharts();
 
-    console.log('removed element:', chartsConfigs.find(item => item.id === config.id));
+    this.setState({
+      openSnackBar: true,
+    });
+
+    updateCharts();
   }
+
+  handleRequestClose() {
+    this.setState({
+      openSnackBar: false,
+    });
+  };
 
   render() {
     const { data } = this.props;
+    const { openSnackBar } = this.state;
 
     const color = 'rgb(0, 0, 0)'
     const menuItems = [{
@@ -53,6 +68,13 @@ class Chart extends Component {
           :
           <CircularProgress/>
         }
+
+        <Snackbar
+          open={openSnackBar}
+          message="Usunięto wykres!"
+          autoHideDuration={4000}
+          onRequestClose={this.handleRequestClose}
+        />
       </div>
     );
   }

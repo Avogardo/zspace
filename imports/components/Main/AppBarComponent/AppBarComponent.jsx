@@ -50,6 +50,9 @@ class AppBarComponent extends Component {
       name: 'Tryb edycji',
       action: () => {console.log('test')},
     }, {
+      name: 'Import z grafany',
+      action: () => {console.log('test3')},
+    }, {
       name: 'Ustawienia',
       action: this.openDialog,
     }];
@@ -60,7 +63,7 @@ class AppBarComponent extends Component {
           title="System wizualizacji"
           showMenuIconButton={false}
           iconElementRight={
-            <Menu 
+            <Menu
               color={color}
               menuItems={menuItems}
             />
