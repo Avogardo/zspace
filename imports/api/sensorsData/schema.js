@@ -29,6 +29,9 @@ const TableDataSchema = new SimpleSchema({
     type: String,
     optional: true,
   },
+  token: {
+    type: String,
+  },
 });
 
 const currentDataSchema = new SimpleSchema({
@@ -36,6 +39,9 @@ const currentDataSchema = new SimpleSchema({
     type: String,
   },
   userName: {
+    type: String,
+  },
+  token: {
     type: String,
   },
 });

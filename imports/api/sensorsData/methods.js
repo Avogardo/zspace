@@ -9,14 +9,14 @@ import { HTTP } from 'meteor/http';
 export const getData = new ValidatedMethod({
   name: 'get.data',
   validate: TableDataSchema.validator({ clean: true }),
-  run({ baseUrl, roomId, name, title, sensor, query, isLive, className, period }) {
+  run({ baseUrl, roomId, name, title, sensor, query, isLive, className, period, token }) {
     if (Meteor.isServer) {
-      return httpGetAsync(baseUrl, roomId, name, title, sensor, query, isLive, className, period);
+      return httpGetAsync(baseUrl, roomId, name, title, sensor, query, isLive, className, period, token);
     }
   },
 });
 
-const httpGetAsync = (baseUrl, roomId, name, title, sensor, query, className, isLive, period) => {
+const httpGetAsync = (baseUrl, roomId, name, title, sensor, query, className, isLive, period, token) => {
   let url = baseUrl + query;
   if (isLive) {
     const currentDate = new Date();
@@ -27,8 +27,8 @@ const httpGetAsync = (baseUrl, roomId, name, title, sensor, query, className, is
 
   return new Promise((resolve, reject) => {
       HTTP.call('GET', url, {
-        headers:{
-          Authorization: "Bearer eyJrIjoiblFuS1J3cmRMaDlRbk02NG5sS3VsVUJmajhKa0xYTVciLCJuIjoiYXZvZ2FyZG8iLCJpZCI6MX0=",
+        headers: {
+          Authorization: token,
         }
     }, (error, result) => {
       if (error) {
@@ -43,14 +43,14 @@ const httpGetAsync = (baseUrl, roomId, name, title, sensor, query, className, is
 export const getCurrentData = new ValidatedMethod({
   name: 'get.current.data',
   validate: currentDataSchema.validator({ clean: true }),
-  run({ sensor, userName }) {
+  run({ sensor, userName, token }) {
     if (Meteor.isServer) {
-      return httpGetCurrentAsync(sensor, userName);
+      return httpGetCurrentAsync(sensor, userName, token);
     }
   },
 });
 
-const httpGetCurrentAsync = (sensor, userName) => {
+const httpGetCurrentAsync = (sensor, userName, token) => {
   const currentDate = new Date();
   const unixTime = currentDate.getTime();
   const backTime = currentDate - 1617389;
@@ -60,7 +60,7 @@ const httpGetCurrentAsync = (sensor, userName) => {
   return new Promise((resolve, reject) => {
       HTTP.call('GET', url, {
         headers:{
-          Authorization: "Bearer eyJrIjoiblFuS1J3cmRMaDlRbk02NG5sS3VsVUJmajhKa0xYTVciLCJuIjoiYXZvZ2FyZG8iLCJpZCI6MX0=",
+          Authorization: token,
         }
     }, (error, result) => {
       if (error) {

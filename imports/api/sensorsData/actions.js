@@ -3,8 +3,8 @@ import {
   getCurrentData,
 } from './methods.js';
 
-const get = (baseUrl, config) => new Promise((resolve, reject) => {
-  getData.call({ baseUrl, ...config }, (err, res) => {
+const get = (baseUrl, config, token) => new Promise((resolve, reject) => {
+  getData.call({ baseUrl, ...config, token }, (err, res) => {
     if (err) {
       const error = new Error(err.reason || err);
       console.log(err);
@@ -14,8 +14,8 @@ const get = (baseUrl, config) => new Promise((resolve, reject) => {
   });
 });
 
-const getCurrent = (sensor, userName) => new Promise((resolve, reject) => {
-  getCurrentData.call({ sensor, userName }, (err, res) => {
+const getCurrent = (sensor, userName, token) => new Promise((resolve, reject) => {
+  getCurrentData.call({ sensor, userName, token }, (err, res) => {
     if (err) {
       const error = new Error(err.reason || err);
       console.log(err);

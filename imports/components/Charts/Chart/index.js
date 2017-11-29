@@ -10,11 +10,12 @@ const composer = ({ config }, onData) => {
   const query = config.query;
   const credentials = JSON.parse(localStorage.getItem('credentials'));
   const graphanaName = credentials ? credentials.graphanaName : '';
+  const token = credentials ? credentials.authenticationHeader : '';
   const baseUrl = `https://${graphanaName}.grafana.net/api/datasources/proxy/4/query?`;
 
   const apiUrl = baseUrl + query;
 
-  sensorsActions.get(baseUrl, config).then(result => {
+  sensorsActions.get(baseUrl, config, token).then(result => {
     const chartData = sensorsHelpers.toChartData(result.data.results[0].series[0]);
 
     const backgroundColor = config.title === 'Temperatura' ? '#EF5350' : '#5C6BC0';
