@@ -63,7 +63,7 @@ img:active {
     margin-top: 10px;
     margin-right: 5px;
     margin-left: 5px;
-    min-height: 360px;
+    height: 360px;
 }
 
 .long-tile {
@@ -112,6 +112,12 @@ img:active {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 48%;
+    margin-top: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    min-height: 360px;
+    max-height: 360px;
 }
 
 .circular-progress-wrapper {
@@ -135,6 +141,11 @@ img:active {
 
 .tile {
     width: 98%;
+}
+
+.left-tile {
+    width: 98%;
+    max-height: 800px;
 }
 
 }
@@ -176,5 +187,10 @@ img:active {
 
 .tile {
     width: 98%;
+}
+
+.left-tile {
+    width: 98%;
+    max-height: 800px;
 }
 }

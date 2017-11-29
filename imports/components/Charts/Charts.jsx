@@ -37,7 +37,7 @@ class Charts extends Component {
 
   render() {
     return (<div className="container">
-        <div className="tile shadow left-tile">
+        <div className="shadow left-tile">
           <RoomPicker />
           <div>
           <Divider />
